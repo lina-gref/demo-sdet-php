@@ -1,0 +1,6 @@
+services:
+  php:
+    build: .
+    container_name: demo_sdet_php
+    volumes:
+      - .:/var/www/html
