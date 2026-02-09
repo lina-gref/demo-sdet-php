@@ -25,4 +25,14 @@ abstract class BasePage implements PageInterface
     {
         $this->driver->get($url);
     }
+
+    /**
+     * Get the WebDriver instance.
+     *
+     * @return RemoteWebDriver
+     */
+    public function getDriver(): RemoteWebDriver
+    {
+        return $this->driver;
+    }
 }

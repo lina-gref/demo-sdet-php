@@ -31,4 +31,19 @@ class LoginPage extends BasePage
         $loginButton = $this->driver->findElement(WebDriverBy::id('login-button'));
         $loginButton->click();
     }
+
+    /**
+     * Verify that the login page is displayed.
+     *
+     * @return bool
+     */
+    public function isDisplayed(): bool
+    {
+        try {
+            $this->driver->findElement(WebDriverBy::id('login-button'));
+            return true;
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 }

@@ -7,6 +7,7 @@ namespace Nymph\DemoSdetPhp;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Nymph\DemoSdetPhp\Api\PublicApiHub;
 use Nymph\DemoSdetPhp\Preconditions\PreconditionHub;
+use Nymph\DemoSdetPhp\TestData\LLMGenerator;
 use Nymph\DemoSdetPhp\TestData\TestDataHub;
 use Nymph\DemoSdetPhp\TestData\Users\UserFactory;
 use Nymph\DemoSdetPhp\TestData\Users\UserGenerator;
@@ -27,7 +28,8 @@ trait AMTestCaseTrait
         if ($this->testDataHub === null) {
             $userProvider = UserFactory::create();
             $userGenerator = new UserGenerator($userProvider);
-            $this->testDataHub = new TestDataHub($userGenerator);
+            $llmGenerator = new LLMGenerator();
+            $this->testDataHub = new TestDataHub($userGenerator, $llmGenerator);
         }
 
         return $this->testDataHub;
